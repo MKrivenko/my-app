@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import 'semantic-ui-css/semantic.min.css';
+import './App.scss';
+
+import Home from './pages/Home/Home';
+import SignUp from './pages/SignUp/SignUp';
+import {BrowserRouter, Route} from 'react-router-dom';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <BrowserRouter>
+          <div>
+            <Route exact={true} path='/' render={() => (
+                <div className="App">
+                  <Home />
+                </div>
+            )}/>
+            <Route exact={true} path='/signup' render={() => (
+                <div className="App">
+                  <SignUp />
+                </div>
+            )}/>
+          </div>
+        </BrowserRouter>
     );
   }
 }
