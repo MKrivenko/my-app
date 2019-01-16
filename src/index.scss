@@ -26,17 +26,22 @@ $primary-family: 'montserratregular';
 $primary-color: #000;
 $primary-background: #fcfcfc;
 $orange: #E38618;
-$white: #fff;
+$white: #ffffff;
 $green: #8DBB44;
-
+$red: #F24824;
+$grey: #C5C5C5;
 body {
   margin: 0;
   padding: 0;
+  background: $primary-background;
   font: 12px/1.2 $primary-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+a, a:hover{
+  color: $primary-color;
+  outline: none;
+}
 code {
   font-family: $primary-family;
 }
@@ -46,13 +51,48 @@ code {
   margin: 0 auto;
   padding: 0 15px;
 }
-.App {
-  text-align: center;
+h1.ui.header{
+  font: 34px/46px $primary-family{
+    weight: bold;
+  };
 }
+h2.ui.header{
+  font: 18px/46px $primary-family{
+    weight: bold;
+  };
+}
+h3.ui.header{
+  font: 14px/18px $primary-family{
+    weight: bold;
+  };
+}
+h4.ui.header{
+  font: 12px/15px $primary-family{
+    weight: bold;
+  };
+}
+.flex{
+  display: flex;
+}
+.v-centered{
+  align-items: center;
+}
+.between{
+  justify-content: space-between;
+}
+.red{
+  color: $red;
+}
+.grey{
+  color: $grey;
+}
+/* --------------- START Header styles ---------------- */
 
 .ui.image.app-logo {
   width: 82px;
   height: 36px;
+  position: absolute;
+  left: 22px;
 }
 
 .App-header {
@@ -62,7 +102,7 @@ code {
   justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 7px 10px 7px 22px;
+  padding: 13px 0;
   .container{
     .ui.menu{
       font: 14px/18px $primary-family;
@@ -74,6 +114,9 @@ code {
         &.active{
           color: $primary-color;
         }
+        &:first-child{
+          padding-left: 0;
+        }
         color: $white;
       }
 
@@ -81,21 +124,108 @@ code {
   }
   .ui.secondary.menu{
     margin: 0;
+    position: absolute;
+    right: 5px;
     .item{
       padding: 0;
     }
   }
 }
-
-.App-link {
-  color: #61dafb;
+.sub-header{
+  background: $white;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
 }
+.sub-header-container{
+  padding: 9px 0;
+  h1.ui.header{
+    margin: 0 40px 0 0;
+    display: inline-block;
+  }
+}
+.ui.input.search-element{
+  float: right;
+  input{
+    background: #F6F6F6;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 24px;
+    padding: 7px 2px 7px 19px;
+    min-width: 320px;
+    font: 14px/18px $primary-family{
+      weight: 300;
+      style: italic;
+    };
+    border: none;
+    &::placeholder{
+      color: $primary-color;
+    }
+    &:focus::placeholder{
+      opacity: 0;
+    }
+  }
+  i.circular.icon{
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 15px!important;
+  }
+  i.inverted.bordered.olive.icon,
+  i.inverted.circular.olive.icon{
+    background: $green url("./assetc/Vector.png") no-repeat center !important;
+    opacity: 0.8;
+  }
+  i.icon.search:before{
+    content: "";
+  }
+}
+.breadcrumbs{
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+  li{
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 4px;
+    a{
+      font-weight: normal;
+    }
+  }
+}
+.filter-top{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  li{
+    display: inline-block;
+    margin: 0 11px;
+    &.active{
+      a{
+        font-weight: bold;
+        position: relative;
+        &:after{
+          content:"";
+          display: block;
+          position: absolute;
+          bottom: -5px;
+          left: -5px;
+          width: calc(100% + 10px);
+          border-bottom: 2px solid $primary-color;
+        }
+      }
+    }
+  }
+}
+/* --------------- END Header styles ---------------- */
+
 /* --------------- START button styles ---------------- */
 .ui.button{
-  background-color: $white;
+  background: $white;
   border-radius: 22px;
   color: $green;
   min-width: 104px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
   &:hover{
     color: $white;
     background-color: $green;
@@ -113,3 +243,222 @@ code {
   padding-bottom: 9px;
 }
 /* --------------- END button styles ---------------- */
+
+/* --------------- START filter styles ---------------- */
+.filters{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 35px;
+  label{
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-left: 10px;
+  }
+  .ui.selection.dropdown{
+    background: $white;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .ui.selection.dropdown .menu{
+    border-radius: 0 0 8px 8px;
+  }
+  .ui.selection.dropdown:not(.active){
+    border-color: transparent;
+  }
+}
+.bookmaker,
+.sports{
+  flex-basis: 17.6%;
+}
+.league{
+  flex-basis: 24.3%;
+}
+.yield,
+.units,
+.picks{
+  flex-basis: 7.6%;
+}
+.period{
+  flex-basis: 12.5%;
+}
+.ui.inline.dropdown>.text{
+  font-weight: 500;
+}
+/* --------------- END filter styles ---------------- */
+/* --------------- START content styles ---------------- */
+.content-header{
+  margin: 0 0 14px;
+  h4.ui.header,
+  h3.ui.header{
+    margin: 0;
+  }
+}
+.bunner{
+  background: url("./assetc/bunner.png") no-repeat center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 114px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin: 13px 0;
+  h3.ui.header{
+    color: $white;
+    margin: 0;
+    font-size: 32px;
+    line-height: 49px;
+  }
+  .ui.disabled.input{
+    opacity: 1;
+  }
+  .ui.input>input::placeholder,
+  .ui.input::placeholder,
+  .ui.input{
+    color: $green;
+  }
+  .ui.input>input{
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    font-weight: bold;
+    line-height: 39px;
+    font-size: 32px;
+    color: $green;
+    width: 73px;
+    height: 50px;
+    padding: 0;
+    margin: 0 15px;
+    text-align: center;
+  }
+}
+.tipster{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 11px 0;
+}
+.tipster-info{
+  display: flex;
+  align-items: center;
+  flex-basis: 40%;
+}
+.tipster-ava{
+  position: relative;
+  img{
+    margin-right: 15px;
+  }
+}
+.marked{
+  position: absolute;
+  bottom: 0;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+  background: #8DBB44;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.tipster-description{
+  h2.ui.header{
+    margin: 0;
+    line-height: 1.1;
+  }
+  p{
+    line-height: 18px;
+    margin-bottom: 4px;
+  }
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+      display: inline-block;
+      .ui.small.image{
+        width: auto;
+        img{
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+.tipster-actions{
+  display: flex;
+  flex-basis: 60%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  .grey{
+    display: block;
+  }
+}
+.actions{
+  display: flex;
+  align-items: center;
+  a{
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    margin-left: 10px;
+    &.user{
+      background: url("./assetc/icon-01.png") no-repeat center;
+    }
+    &.menu{
+      background: url("./assetc/icon-02.png") no-repeat center;
+    }
+    &.email{
+      background: url("./assetc/icon-03.png") no-repeat center;
+      /*-webkit-background-size: 100% 100%;
+      background-size: 100% 100%;*/
+    }
+  }
+  .ui.button{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    min-width: 95px;
+  }
+  .ui.button.red{
+    background-color: $red;
+    &:hover{
+      background-color: #ea2a02;
+    }
+  }
+}
+.fast-tipster,
+.best-tipster{
+  display: inline-block;
+  margin-left: 10px;
+
+}
+[data-tooltip]:after{
+  font-weight: 300;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  border: none;
+  padding: 6px 1em;
+}
+[data-tooltip]:before{
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+.date-filter{
+  margin: 0 0 35px;
+  padding: 0;
+  list-style: none;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-end;
+  li{
+    margin-left: 20px;
+  }
+}
+/* --------------- END content styles ---------------- */

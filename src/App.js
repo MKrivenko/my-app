@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 
-import Home from './pages/Home/Home';
+import Tipsters from './pages/Tipsters/Tipsters';
 import SignUp from './pages/SignUp/SignUp';
 import {BrowserRouter, Route} from 'react-router-dom';
 
@@ -14,7 +14,7 @@ class App extends Component {
           <div>
             <Route exact={true} path='/' render={() => (
                 <div className="App">
-                  <Home />
+                  <Tipsters />
                 </div>
             )}/>
             <Route exact={true} path='/signup' render={() => (
