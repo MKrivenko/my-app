@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UpHeader from "../components/UpHeader/UpHeader";
+import Footer from "../components/Footer/Footer";
 import { Header, Dropdown, Icon, Input, Image, Button } from 'semantic-ui-react'
 
 import ava from "../../assetc/photo-01.png";
@@ -56,12 +57,6 @@ const Img05 = () => (
         href='http://google.com'
         target='_blank'
     />
-)
-const Img06 = () => (
-    <img src={img06} alt={"Best tipster"}/>
-)
-const Img07 = () => (
-    <img src={img07} alt={"Fast tipster"}/>
 )
 
 //import { sports } from '../common'
@@ -172,10 +167,6 @@ const DropdownOrder = () => (
         <Dropdown inline options={order} defaultValue={order[0].value} />
     </Header>
 )
-// ---------------- bunner inputs -------------
-const InputHour = () => <Input disabled placeholder='00' />
-const InputMinutes = () => <Input disabled placeholder='12' />
-const InputSeconds = () => <Input disabled placeholder='45' />
 
 // ---------------- tipster actions  -------------
 
@@ -186,11 +177,11 @@ export default class Tipsters extends Component {
 
     render () {
         return (
-            <div>
+            <div className='holder'>
                 <UpHeader />
-                <div className='body'>
+                <div className='content-box'>
                     <div className="container">
-                        <div className="filters">
+                        <div className="filters mdirection">
                             <div className="sports">
                                 <label>Sports</label>
                                 <DropdownSports/>
@@ -219,17 +210,18 @@ export default class Tipsters extends Component {
                                 <label>Period</label>
                                 <DropdownPeriod/>
                             </div>
-
                         </div>
                         <div className="row flex v-centered between content-header">
                             <Header as='h3'>743 Tipsters</Header>
                             <DropdownOrder/>
                         </div>
-                        <div className="bunner">
+                        <div className="bunner mdirection">
                             <Header as='h3'>Word Cup Starts in</Header>
-                            <InputHour/>
-                            <InputMinutes/>
-                            <InputSeconds/>
+                            <div>
+                             <Input disabled placeholder='00' />
+                             <Input disabled placeholder='12' />
+                             <Input disabled placeholder='45' />
+                            </div>
                         </div>
                         <div className="tipster">
                             <div className='tipster-info'>
@@ -266,9 +258,9 @@ export default class Tipsters extends Component {
                                 </div>
                                 <div className="actions">
                                     <Button color='red'>Get Tips</Button>
-                                    <a href="#" className='email'></a>
-                                    <a href="#" className='menu'></a>
-                                    <a href="#" className='user'></a>
+                                    <a href="/" className='email'>email</a>
+                                    <a href="/" className='menu'>menu</a>
+                                    <a href="/" className='user'>user</a>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +273,7 @@ export default class Tipsters extends Component {
                                     <Header as='h2'>
                                         Sang Young-Il
                                         <div className='best-tipster' data-tooltip="Best tipster">
-                                            <Img06/>
+                                            <img src={img06} alt={"Best tipster"}/>
                                         </div>
                                     </Header>
                                     <p>Football, tennnis, baseball</p>
@@ -312,9 +304,9 @@ export default class Tipsters extends Component {
                                 </div>
                                 <div className="actions">
                                     <Button color='red'>Get Tips</Button>
-                                    <a href="#" className='email'></a>
-                                    <a href="#" className='menu'></a>
-                                    <a href="#" className='user'></a>
+                                    <a href="/" className='email'>email</a>
+                                    <a href="/" className='menu'>menu</a>
+                                    <a href="/" className='user'>user</a>
                                 </div>
                             </div>
                         </div>
@@ -327,7 +319,7 @@ export default class Tipsters extends Component {
                                     <Header as='h2'>
                                         Sang Young-Il
                                         <div className='fast-tipster' data-tooltip="Fast tipster">
-                                            <Img07/>
+                                            <img src={img07} alt={"Fast tipster"}/>
                                         </div>
                                     </Header>
                                     <p>Football, tennnis, baseball</p>
@@ -358,28 +350,24 @@ export default class Tipsters extends Component {
                                 </div>
                                 <div className="actions">
                                     <Button color='red'>Get Tips</Button>
-                                    <a href="#" className='email'></a>
-                                    <a href="#" className='menu'></a>
-                                    <a href="#" className='user'></a>
+                                    <a href="/" className='email'>email</a>
+                                    <a href="/" className='menu'>menu</a>
+                                    <a href="/" className='user'>user</a>
                                 </div>
                             </div>
                         </div>
                         <ul className="date-filter">
-                            <li><a href="#">Last Month</a></li>
-                            <li><a href="#">Last 3 Months</a></li>
-                            <li><a href="#">Last Year</a></li>
-                            <li><a href="#">Current Month</a></li>
+                            <li><a href="/">Last Month</a></li>
+                            <li><a href="/">Last 3 Months</a></li>
+                            <li><a href="/">Last Year</a></li>
+                            <li><a href="/">Current Month</a></li>
                         </ul>
-                        <div className="ui grid">
-                            <div className="center aligned column row">
-                                <div className="column">
-                                    <Button>Upload more</Button>
-                                </div>
-                            </div>
+                        <div className="flex centered">
+                            <Button>Upload more</Button>
                         </div>
                     </div>
                 </div>
-
+                <Footer/>
             </div>
         )
     }

@@ -30,6 +30,9 @@ $white: #ffffff;
 $green: #8DBB44;
 $red: #F24824;
 $grey: #C5C5C5;
+html, body, #root, #root>div, .App, .holder{
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -37,6 +40,12 @@ body {
   font: 12px/1.2 $primary-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+}
+.holder{
+  display: flex;
+  flex-direction: column;
 }
 a, a:hover{
   color: $primary-color;
@@ -74,6 +83,10 @@ h4.ui.header{
 .flex{
   display: flex;
 }
+.centered{
+  justify-content: center;
+  align-items: center;
+}
 .v-centered{
   align-items: center;
 }
@@ -87,7 +100,10 @@ h4.ui.header{
   color: $grey;
 }
 /* --------------- START Header styles ---------------- */
-
+/*.ui.fixed.menu{
+  display: flex;
+  flex-direction: column;
+}*/
 .ui.image.app-logo {
   width: 82px;
   height: 36px;
@@ -126,6 +142,7 @@ h4.ui.header{
     margin: 0;
     position: absolute;
     right: 5px;
+    top: 5px;
     .item{
       padding: 0;
     }
@@ -133,7 +150,7 @@ h4.ui.header{
 }
 .sub-header{
   background: $white;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 .sub-header-container{
   padding: 9px 0;
@@ -146,7 +163,7 @@ h4.ui.header{
   float: right;
   input{
     background: #F6F6F6;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     border-radius: 24px;
     padding: 7px 2px 7px 19px;
     min-width: 320px;
@@ -225,7 +242,10 @@ h4.ui.header{
   border-radius: 22px;
   color: $green;
   min-width: 104px;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  font: 14px/18px $primary-family{
+    weight: bold;
+  };
   &:hover{
     color: $white;
     background-color: $green;
@@ -259,7 +279,7 @@ h4.ui.header{
   }
   .ui.selection.dropdown{
     background: $white;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-bottom: 14px;
     font-weight: 500;
@@ -291,6 +311,10 @@ h4.ui.header{
 }
 /* --------------- END filter styles ---------------- */
 /* --------------- START content styles ---------------- */
+.content-box{
+  flex: 1 0 auto;
+  margin-bottom: 20px;
+}
 .content-header{
   margin: 0 0 14px;
   h4.ui.header,
@@ -304,7 +328,7 @@ h4.ui.header{
   align-items: center;
   justify-content: center;
   height: 114px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   margin: 13px 0;
   h3.ui.header{
@@ -323,7 +347,7 @@ h4.ui.header{
   }
   .ui.input>input{
     background: #FFFFFF;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
     border-radius: 4px;
     font-weight: bold;
     line-height: 39px;
@@ -341,7 +365,7 @@ h4.ui.header{
   align-items: center;
   justify-content: space-between;
   background: #FFFFFF;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   padding: 10px 14px;
   margin: 11px 0;
@@ -410,6 +434,8 @@ h4.ui.header{
     height: 28px;
     display: inline-block;
     margin-left: 10px;
+    font-size: 0;
+    line-height: 0;
     &.user{
       background: url("./assetc/icon-01.png") no-repeat center;
     }
@@ -442,13 +468,13 @@ h4.ui.header{
 }
 [data-tooltip]:after{
   font-weight: 300;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   border-radius: 24px;
   border: none;
   padding: 6px 1em;
 }
 [data-tooltip]:before{
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 .date-filter{
   margin: 0 0 35px;
@@ -462,3 +488,184 @@ h4.ui.header{
   }
 }
 /* --------------- END content styles ---------------- */
+/* --------------- START footer styles ---------------- */
+footer{
+  flex-shrink: 0;
+  a{
+    color: $white;
+  }
+}
+.footer-top{
+  background: #2E5889;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.footer-col{
+  padding: 7px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  h3.ui.header{
+    font-size: 16px;
+    color: $white;
+    font-weight: normal;
+    margin: 18px 0 3px;
+  }
+  .ui.button{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 16px;
+  }
+  .ui.list{
+
+  }
+}
+.footer-logo{
+  margin-bottom: 18px;
+}
+.social{
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  li{
+    margin-left: 3px;
+    margin-right: 13px;
+    display: flex;
+    a{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    img.ui.image{
+      margin: 0 auto;
+    }
+  }
+  span{
+    color: $white;
+    font-size: 10px;
+  }
+}
+.payment{
+  margin: 0 0 7px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  li{
+    flex-basis: 50%;
+    margin: 12px 0 6px;
+  }
+}
+.mailto{
+  margin-top: 10px;
+}
+.footer-bottom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #021F41;
+  padding: 20px;
+  span{
+    color: #8893BA;
+  }
+}
+/* --------------- END footer styles ---------------- */
+/* --------------- START media styles ---------------- */
+@media all and (max-width: 1348px){
+  .App-header .ui.secondary.menu,
+  .ui.image.app-logo{
+    position: relative;
+  }
+  .ui.image.app-logo{
+    min-width: 82px;
+    margin-right: 15px;
+  }
+}
+@media all and (max-width: 1024px){
+  .filters{
+    flex-wrap: wrap;
+  }
+  .bookmaker, .sports {
+    flex-basis: 33%;
+  }
+  .yield, .units, .picks {
+    flex-basis: 20%;
+  }
+  .period {
+    flex-basis: 25%;
+  }
+}
+@media all and (max-width: 767px){
+  .ui.image.app-logo{
+    margin-right: 5px;
+  }
+  .App-header{
+    position: relative;
+    padding: 5px 0;
+  }
+  .ui.image.app-logo{
+    left: 5px;
+  }
+  .App-header .container{
+    width: auto;
+    margin: 0;
+    padding: 0 5px;
+    >div>.ui.dropdown{
+      position: static;
+      .menu{
+        width: 100%;
+        >.item:hover{
+          background: inherit;
+        }
+        .dropdown.icon:before{
+          content: '\f0d7';
+        }
+        .menu{
+          position: static;
+          border: none;
+          box-shadow: none;
+        }
+        .ui.button{
+          margin: .78571429rem 1.14285714rem;
+        }
+      }
+    }
+  }
+  .mdirection{
+    flex-direction: column;
+  }
+  .ui.input.search-element{
+    float: none;
+    width: 100%;
+    margin-top: 10px;
+    input{
+      min-width: 100%;
+    }
+  }
+  .bunner h3.ui.header{
+    font-size: 27px;
+  }
+  .bunner .ui.input > input{
+    width: 65px;
+    height: 40px;
+    font-size: 26px;
+  }
+  .footer-col{
+    align-items: center;
+  }
+  .payment{
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    li{
+      flex-basis: auto;
+    }
+  }
+  .download-col .list{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+/* --------------- END media styles ---------------- */
